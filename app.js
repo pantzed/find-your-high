@@ -24,6 +24,7 @@ document.getElementById('search-form').addEventListener('submit', processSubmit)
   function validateSubmit() {
     event.preventDefault();
     let searchString = document.getElementById('strain-name').value;
+    searchString = searchString.trim();
     if (searchString.match(/^[\w]+([ ]?[\w]+)+$/gm)){
       clearSearch();
       return searchString;
