@@ -38,6 +38,9 @@ document.getElementById('search-form').addEventListener('submit', processSubmit)
     fetch(`http://strainapi.evanbusse.com/eiZRheT/strains/search/name/${search}`)
     .then((response) => response.json())
     .then((data) => {
+      if (data.length === 0) {
+        return;
+      }
       strains.push(data[0]);
       renderStrainInfo();
     });
