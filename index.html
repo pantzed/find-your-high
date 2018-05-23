@@ -9,26 +9,28 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
 <body>
-    <header>
-        <h1>Find Your High</h1>
-    </header>
-    <form id="search-form">
-        <label for="strain-name">Search By Strain:</label>
-        <input type="text" name="strain-name" id="strain-name">
-        <button type="submit">Submit Search</button>
-    </form>
-    <article>
+    <div class="container">
         <header>
-            <h2>Strain Information</h2>
+            <h1>Find Your High</h1>
         </header>
-        <section>
+        <form id="search-form">
+            <label for="strain-name">Search By Strain:</label>
+            <input type="text" name="strain-name" id="strain-name">
+            <button type="submit">Submit Search</button>
+        </form>
+        <article>
             <header>
-                <h3 id="display-strain-name"><!--info from api call--></h3>
+                <h2>Strain Information</h2>
             </header>
-            <h4 id="strain-description-header"><!--info from api call--></h4>
-            <p id="strain-description"></p>
-        </section>
-    </article>
+            <section>
+                <header>
+                    <h3 id="display-strain-name"><!--info from api call--></h3>
+                </header>
+                <h4 id="strain-description-header"><!--info from api call--></h4>
+                <p id="strain-description"></p>
+            </section>
+        </article>
+    </div>
 </body>
 <script src="app.js"></script>
 </html>
