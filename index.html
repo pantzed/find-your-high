@@ -10,9 +10,13 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Find Your High</h1>
-        </header>
+        <div class="flex-head-img">
+            <img src="https://openclipart.org/download/292976/cannabis-leaf-2.svg" />
+            <header>
+                <h1>Find Your High</h1>
+            </header>
+        </div>
+        <hr>
         <form id="search-form">
             <label for="strain-name">Search By Strain:</label>
             <input type="text" name="strain-name" id="strain-name">
@@ -20,7 +24,7 @@
         </form>
         <article class="row">
             <section class="one-third column">
-                <header>
+                <header class="bottom-border">
                     <h2>Search Results</h2>
                 </header>
                 <ul id="search-results-list">
@@ -28,12 +32,12 @@
                 </ul>
             </section>
             <section class="two-thirds column">
-                <header>
+                <header class="bottom-border">
                     <h2>Strain Information</h2>
                 </header>    
                 <section>
                     <header>
-                        <h3 id="display-strain-name"><!--info from api call--></h3>
+                        <h3><span id="display-strain-name"></span></h3>
                     </header>
                     <h4 id="strain-description-header"><!--info from api call--></h4>
                     <p id="strain-description"></p>
