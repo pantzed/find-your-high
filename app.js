@@ -20,7 +20,7 @@ function displayAllReturnedStrains() {
   strains[0].forEach(function(strain){
     let strainLink = document.createElement('a');
     strainLink.setAttribute('strain_index', strains[0].indexOf(strain));
-    strainLink.setAttribute('href', "#");
+    strainLink.setAttribute('href', "#info-row");
     strainLink.innerHTML = strain.name;
     let strainName = document.createElement('li');
     strainName.appendChild(strainLink);
