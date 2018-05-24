@@ -1,17 +1,47 @@
 (function() {
 let strains = [];
 
-function renderStrainInfo() {
-  strains.forEach(function(strain){
-    document.getElementById('display-strain-name').textContent = strain.name;
-    document.getElementById('strain-description-header').textContent = "Description";
-    document.getElementById('strain-description').textContent = strain.desc;
+document.querySelector('#search-results-list').addEventListener("click", updateStrainInfo);
+
+function updateStrainInfo(){
+  let strainIndex = event.target.getAttribute('strain_index');
+  document.getElementById('display-strain-name').textContent = strains[0][strainIndex].name;
+  if (strains[0][strainIndex].desc === null){
+    document.getElementById('strain-description').textContent = "No description Available!";
+  }
+  else {
+    document.getElementById('strain-description').textContent = strains[0][strainIndex].desc;
+  }
+}
+
+function displayAllReturnedStrains() {
+  document.getElementById('search-results-list').innerHTML = "";
+  strains[0].forEach(function(strain){
+    let strainLink = document.createElement('a');
+    strainLink.setAttribute('strain_index', strains[0].indexOf(strain));
+    strainLink.setAttribute('href', "#");
+    strainLink.innerHTML = strain.name;
+    let strainName = document.createElement('li');
+    strainName.appendChild(strainLink);
+    document.getElementById('search-results-list').appendChild(strainName);
   });
+}
+
+function renderFirstStrainInfo() {
+  displayAllReturnedStrains();
+  document.getElementById('display-strain-name').textContent = strains[0][0].name;
+  if (strains[0][0].desc === null){
+    document.getElementById('strain-description').textContent = "No description Available!";
+  }
+  else {
+    document.getElementById('strain-description').textContent = strains[0][0].desc;
+  }
 }
 
 document.getElementById('search-form').addEventListener('submit', processSubmit);
 
   function processSubmit() {
+    strains = [];
     let searchString = validateSubmit();
     if (searchString === false) {
       console.log("Invalid search, try again!");
@@ -42,8 +72,8 @@ document.getElementById('search-form').addEventListener('submit', processSubmit)
       if (data.length === 0) {
         return;
       }
-      strains.push(data[0]);
-      renderStrainInfo();
+      strains.push(data);
+      renderFirstStrainInfo();
     });
   }
 })();
