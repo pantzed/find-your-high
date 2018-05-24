@@ -33,6 +33,7 @@ function noExactMatchAlert() {
 }
 
 function renderFirstStrainInfo() {
+  console.log(strains);
   displayAllReturnedStrains();
   let strainIndex = 0;
   let exact = false;
@@ -42,19 +43,25 @@ function renderFirstStrainInfo() {
       exact = true;
     }
   });
+
   if (exact === false){
     noExactMatchAlert();
   }
   else {
     document.querySelector('#alert > p').innerHTML = "";
   }
+
   document.getElementById('display-strain-name').textContent = strains[0][strainIndex].name;
+
   if (strains[0][0].desc === null){
     document.getElementById('strain-description').textContent = "No description Available!";
   }
   else {
     document.getElementById('strain-description').textContent = strains[0][strainIndex].desc;
   }
+
+  document.getElementById('strain-race').textContent = `Type: ${strains[0][strainIndex].race}`;
+
 }
 
 document.getElementById('search-form').addEventListener('submit', processSubmit);
