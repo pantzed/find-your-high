@@ -28,14 +28,26 @@ function displayAllReturnedStrains() {
   });
 }
 
+function noExactMatchAlert() {
+  document.querySelector('#alert > p').innerHTML = (`* No exact result for "${globalSearchString}"`).toUpperCase();
+}
+
 function renderFirstStrainInfo() {
   displayAllReturnedStrains();
   let strainIndex = 0;
+  let exact = false;
   strains[0].forEach(function(strain){
     if (strain.name.toLowerCase() === globalSearchString.toLowerCase()){
       strainIndex = strains[0].indexOf(strain);
+      exact = true;
     }
   });
+  if (exact === false){
+    noExactMatchAlert();
+  }
+  else {
+    document.querySelector('#alert > p').innerHTML = "";
+  }
   document.getElementById('display-strain-name').textContent = strains[0][strainIndex].name;
   if (strains[0][0].desc === null){
     document.getElementById('strain-description').textContent = "No description Available!";

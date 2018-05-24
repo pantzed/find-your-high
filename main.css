@@ -7,6 +7,10 @@ img {
     width: 150px;
 }
 
+#alert > p {
+    color: red;
+}
+
 .bottom-border > h2{
     border-bottom: 1px solid gray;
 }
@@ -15,3 +19,4 @@ img {
     display: flex;
     align-items: center;
 }
+
